@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+    restart: always
+    depends_on:
+      - docker
+  
+  docker:
+    image: browserless/chrome:latest
+    container_name: browserless
+    ports:
+      - "3000:3000"
